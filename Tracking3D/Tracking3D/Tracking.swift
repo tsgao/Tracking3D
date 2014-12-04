@@ -177,7 +177,7 @@ class Tracking {
         
     }
     func update_volocity(){
-        velocity_x = velocity_x + acceleration_matrix.flat[0]*update_freq;
+        velocity_x = velocity_x - acceleration_matrix.flat[0]*update_freq;
         velocity_y = velocity_y - acceleration_matrix.flat[1]*update_freq;
         velocity_z = velocity_z + acceleration_matrix.flat[2]*update_freq;
         
@@ -214,6 +214,6 @@ class Tracking {
         position_y = position_y + velocity_y*update_freq;
         position_z = position_z + velocity_z*update_freq;
         
-        print("\(position_x) \(position_y) \(position_z)");
+        //print("\(position_x) \(position_y) \(position_z)");
     }
 }
