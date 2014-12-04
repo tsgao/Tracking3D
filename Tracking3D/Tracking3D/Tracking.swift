@@ -10,11 +10,11 @@ import Foundation
 import CoreMotion
 
 class Tracking {
-    var record: Bool = false;
     let MotionManager = CMMotionManager()
     let update_freq = 0.02;
     let high_pass_filter = 0.2;
-    let high_pass_filte2 = 0.4;
+    let high_pass_filter2 = 0.4;
+    let low_pass_filter = 1.5;
     
     var preTime: Double = 0;
     var currentTime: Double = 0;
@@ -99,10 +99,6 @@ class Tracking {
         var temp: Double = (2*quat.x*quat.z+2*quat.w*quat.y);
         y = -atan(2*(quat.x*quat.z - quat.w*quat.y)/(sqrt(1-temp*temp)));
         z = atan2(2*(quat.x*quat.y - quat.w*quat.z) , 2*(quat.w*quat.w) - 1 + 2*(quat.x*quat.x));
-        
-        //x_roll.text = "\(x*180/M_PI)";
-        //y_pitch.text = "\(y*180/M_PI)";
-        //z_yaw.text = "\(z*180/M_PI)";
     }
     func update_acceleration(){
         
@@ -137,15 +133,23 @@ class Tracking {
         rotational_matrix = array(cos(z),-sin(z),0,sin(z),cos(z),0,0,0,1).reshape((3,3));
         acceleration_matrix = rotational_matrix.dot(acceleration_matrix);
         
-        
+        // High Pass Filter
         if(acceleration_matrix.flat[0] <= high_pass_filter && acceleration_matrix.flat[0] >= -high_pass_filter){
             acceleration_matrix.flat[0] = 0;
         }
         if(acceleration_matrix.flat[1] <= high_pass_filter && acceleration_matrix.flat[1] >= -high_pass_filter){
             acceleration_matrix.flat[1] = 0;
         }
-        if(acceleration_matrix.flat[2] <= high_pass_filte2 && acceleration_matrix.flat[2] >= -high_pass_filte2){
+        if(acceleration_matrix.flat[2] <= high_pass_filter2 && acceleration_matrix.flat[2] >= -high_pass_filter2){
             acceleration_matrix.flat[2] = 0;
+        }
+        
+        // Low Pass Filter
+        if(acceleration_matrix.flat[0] >= low_pass_filter || acceleration_matrix.flat[0] <= -low_pass_filter){
+            acceleration_matrix.flat[0] = low_pass_filter;
+        }
+        if(acceleration_matrix.flat[1] >= low_pass_filter && acceleration_matrix.flat[1] <= -low_pass_filter){
+            acceleration_matrix.flat[1] = low_pass_filter;
         }
         
         
@@ -165,19 +169,10 @@ class Tracking {
         az = az + kz*(acceleration_matrix.flat[2]-az+0.0405718);
         pz = (1-kz)*pz;
         */
-        
-        
-        //print("\(acceleration_matrix.flat[0]) \(acceleration_matrix.flat[1]) \(acceleration_matrix.flat[2]) ");
-        
-        //println("\(acceleration_matrix.flat[0]) \(acceleration_matrix.flat[1]) \(acceleration_matrix.flat[2])");
-        
-        //x_accelerometer.text = "x_a = \(acceleration_matrix.flat[0])";
-        //y_accelerometer.text = "y_a = \(acceleration_matrix.flat[1])";
-        //z_accelerometer.text = "z_a = \(acceleration_matrix.flat[2])";
-        
+        print("\(acceleration_matrix.flat[0]) \(acceleration_matrix.flat[1]) \(acceleration_matrix.flat[2]) ");
     }
     func update_volocity(){
-        velocity_x = velocity_x - acceleration_matrix.flat[0]*update_freq;
+        velocity_x = velocity_x + acceleration_matrix.flat[0]*update_freq;
         velocity_y = velocity_y - acceleration_matrix.flat[1]*update_freq;
         velocity_z = velocity_z + acceleration_matrix.flat[2]*update_freq;
         
@@ -197,16 +192,7 @@ class Tracking {
             a_z_counter = 0;
         }
         
-        //print("\(velocity_x) \(velocity_y) \(velocity_z) ");
-        /*
-        velocity_x = velocity_x + ax*update_freq;
-        velocity_y = velocity_y + ay*update_freq;
-        velocity_z = velocity_z + az*update_freq;
-        */
-        
-        //x_velocity.text = "\(velocity_x)";
-        //y_velocity.text = "\(velocity_y)";
-        //z_velocity.text = "\(velocity_z)";
+        print("\(velocity_x) \(velocity_y) \(velocity_z) ");
         
     }
     func update_position(){
@@ -214,6 +200,6 @@ class Tracking {
         position_y = position_y + velocity_y*update_freq;
         position_z = position_z + velocity_z*update_freq;
         
-        //print("\(position_x) \(position_y) \(position_z)");
+        print("\(position_x) \(position_y) \(position_z)");
     }
 }

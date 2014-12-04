@@ -34,6 +34,7 @@ class PointLine {
     func addLineView(){
         LinesView = UIView(frame: CGRectMake(BGView.frame.minX + 10, BGView.frame.minY + 10, BGView.frame.maxX - 10, BGView.frame.maxY - 10))
         BGView.addSubview(LinesView)
+        pointsCount = 0
     }
     
     func drawLineToPoint(point:CGPoint){

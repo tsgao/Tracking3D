@@ -65,8 +65,11 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="compass.png" translatesAutoresizingMaskIntoConstraints="NO" id="5ds-1k-nQd">
+                                <rect key="frame" x="298" y="54" width="75" height="75"/>
+                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5d-I1-8CW">
-                                <rect key="frame" x="16" y="160" width="382" height="508"/>
+                                <rect key="frame" x="57" y="137" width="300" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -80,6 +83,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="304" y="336"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="compass.png" width="1417" height="1417"/>
+    </resources>
 </document>
