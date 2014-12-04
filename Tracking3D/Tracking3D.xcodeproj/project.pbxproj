@@ -37,6 +37,8 @@
 		159CA4EC1A2EE938007F73B7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159CA4D31A2EE938007F73B7 /* opencv2.framework */; };
 		159CA4ED1A2EE938007F73B7 /* operations-and-indexing.m in Sources */ = {isa = PBXBuildFile; fileRef = 159CA4D41A2EE938007F73B7 /* operations-and-indexing.m */; };
 		159CA4EE1A2EE938007F73B7 /* ScalarArithmetic-bleed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159CA4D61A2EE938007F73B7 /* ScalarArithmetic-bleed.swift */; };
+		159CA4F71A300807007F73B7 /* PointLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159CA4F61A300807007F73B7 /* PointLine.swift */; };
+		159CA4F91A300824007F73B7 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159CA4F81A300824007F73B7 /* Tracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		159CA4D41A2EE938007F73B7 /* operations-and-indexing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "operations-and-indexing.m"; sourceTree = "<group>"; };
 		159CA4D51A2EE938007F73B7 /* swix-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "swix-Bridging-Header.h"; sourceTree = "<group>"; };
 		159CA4D61A2EE938007F73B7 /* ScalarArithmetic-bleed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScalarArithmetic-bleed.swift"; sourceTree = "<group>"; };
+		159CA4F61A300807007F73B7 /* PointLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointLine.swift; sourceTree = "<group>"; };
+		159CA4F81A300824007F73B7 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 		153FCF631A1C635500373109 /* Tracking3D */ = {
 			isa = PBXGroup;
 			children = (
+				159CA4F61A300807007F73B7 /* PointLine.swift */,
 				159CA4B81A2EE938007F73B7 /* swix */,
 				153FCF661A1C635500373109 /* AppDelegate.swift */,
 				153FCF681A1C635500373109 /* ViewController.swift */,
@@ -135,6 +140,7 @@
 				153FCF6D1A1C635500373109 /* Images.xcassets */,
 				153FCF6F1A1C635500373109 /* LaunchScreen.xib */,
 				153FCF641A1C635500373109 /* Supporting Files */,
+				159CA4F81A300824007F73B7 /* Tracking.swift */,
 			);
 			path = Tracking3D;
 			sourceTree = "<group>";
@@ -346,7 +352,9 @@
 				159CA4E51A2EE938007F73B7 /* operators.swift in Sources */,
 				159CA4EA1A2EE938007F73B7 /* math.m in Sources */,
 				159CA4DF1A2EE938007F73B7 /* m-operators.swift in Sources */,
+				159CA4F71A300807007F73B7 /* PointLine.swift in Sources */,
 				159CA4E71A2EE938007F73B7 /* numbers.swift in Sources */,
+				159CA4F91A300824007F73B7 /* Tracking.swift in Sources */,
 				159CA4D81A2EE938007F73B7 /* io.swift in Sources */,
 				159CA4EB1A2EE938007F73B7 /* opencv.mm in Sources */,
 				159CA4E11A2EE938007F73B7 /* complex-math.swift in Sources */,
